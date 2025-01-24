@@ -27,19 +27,19 @@ export class ProductDetailComponent {
   goToSlide(index: number) {
     this.activeIndex = index;
   
-    const carouselElement = document.getElementById('carouselExample');
-    if (carouselElement) {
-      const bootstrapCarousel = new Carousel(carouselElement);
-      bootstrapCarousel.to(index);
-    }
+    // const carouselElement = document.getElementById('carouselExample');
+    // if (carouselElement) {
+    //   const bootstrapCarousel = new Carousel(carouselElement);
+    //   bootstrapCarousel.to(index);
+    // }
   }
 
   scrollToBookingForm() {
-    const bookingForm = document.getElementById('inquireForm');
-    if (bookingForm) {
-      bookingForm.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.error('Booking form element not found.');
-    }
+    // const bookingForm = document.getElementById('inquireForm');
+    // if (bookingForm) {
+    //   bookingForm.scrollIntoView({ behavior: 'smooth' });
+    // } else {
+    //   console.error('Booking form element not found.');
+    // }
   }
 }

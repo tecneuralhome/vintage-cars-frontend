@@ -94,24 +94,24 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   // }
 
   removeClass() {
-    const modal = document.getElementById('registerModal');
-    if (modal) {
-      this.renderer.removeClass(modal, 'show');
-      this.renderer.setStyle(modal, 'display', 'none'); 
-      this.renderer.removeAttribute(modal, 'role'); 
-    }
+    // const modal = document.getElementById('registerModal');
+    // if (modal) {
+    //   this.renderer.removeClass(modal, 'show');
+    //   this.renderer.setStyle(modal, 'display', 'none'); 
+    //   this.renderer.removeAttribute(modal, 'role'); 
+    // }
 
-    const body = document.body;
-    this.renderer.removeClass(body, 'modal-open');
-    this.renderer.removeStyle(body, 'overflow'); 
-    this.renderer.removeStyle(body, 'padding-right'); 
-    this.renderer.removeAttribute(body, 'data-bs-overflow');
-    this.renderer.removeAttribute(body, 'data-bs-padding-right'); 
+    // const body = document.body;
+    // this.renderer.removeClass(body, 'modal-open');
+    // this.renderer.removeStyle(body, 'overflow'); 
+    // this.renderer.removeStyle(body, 'padding-right'); 
+    // this.renderer.removeAttribute(body, 'data-bs-overflow');
+    // this.renderer.removeAttribute(body, 'data-bs-padding-right'); 
 
-    const backdrops = document.querySelectorAll('.modal-backdrop.fade.show');
-    backdrops.forEach((backdrop) => {
-      this.renderer.removeClass(backdrop, 'show'); // Remove the 'show' class
-    });
+    // const backdrops = document.querySelectorAll('.modal-backdrop.fade.show');
+    // backdrops.forEach((backdrop) => {
+    //   this.renderer.removeClass(backdrop, 'show'); // Remove the 'show' class
+    // });
   
   }
 }

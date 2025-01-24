@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "auth-app-angular": {
+    "vintage-cars-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/auth-app-angular",
+            "outputPath": "dist/vintage-cars-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -29,11 +29,16 @@
             ],
             "styles": [
               "src/styles.css",
-               "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -46,7 +51,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "4kB",
-                  "maximumError": "20kB"
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -63,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "auth-app-angular:build:production"
+              "buildTarget": "vintage-cars-frontend:build:production"
             },
             "development": {
-              "buildTarget": "auth-app-angular:build:development"
+              "buildTarget": "vintage-cars-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,7 +99,7 @@
                "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
         }
@@ -102,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "3df829c6-0d49-4af8-9544-8575c54287be"
   }
 }
