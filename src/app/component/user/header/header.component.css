@@ -1,0 +1,65 @@
+ /* =====HEADER BANNER===== */
+ nav {
+     background-color: #000000;
+     font-family: "Roboto Slab", serif;
+ }
+
+ .nav-header nav a {
+     margin: 0 15px;
+     cursor: pointer;
+     font-weight: 500;
+     font-style: normal;
+     font-size: 16px;
+     color: #C5832B;
+ }
+
+ .nav-header .navbar-nav {
+     margin-left: 50px;
+ }
+
+ .navbar-expand-lg .navbar-collapse {
+     justify-content: end;
+ }
+
+ .navbar-light .navbar-toggler-icon {
+    background-image: url(../../../../assets/toggle.svg)
+}
+
+.social-links li{
+    margin: 10px 0;
+}
+
+.navbar-nav .login-btn{
+    background-color: transparent;
+    border: 2px solid #C5832B;
+    border-radius: 6px;
+    width: 90px;
+    height: 35px;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 5px;
+}
+
+.navbar-nav .register-btn{
+    background-color: #C5832B;
+    border: none;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-nav .register-btn{
+        margin: 8px 0;
+    }
+
+    .navbar-nav .login-btn{
+        margin: 8px 0;
+    }
+}
+

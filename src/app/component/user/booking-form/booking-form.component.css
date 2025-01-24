@@ -1,0 +1,94 @@
+/* ===== ENQUIRY FORM ===== */
+
+
+.enquiry-form-blog {
+    padding: 2% 0;
+}
+
+.enquiry-form-blog h1 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align: center;
+}
+
+.enquiry-form-blog form {
+    padding: 6% 4%;
+    background-color: rgba(197, 131, 43, 0.26);
+    border-radius: 12px;
+}
+
+.enquiry-form-blog form .form-group {
+    margin: 10px 0;
+}
+
+.enquiry-form-blog form label {
+    display: block;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.enquiry-form-blog form input {
+    width: 100%;
+    height: 40px;
+}
+
+.enquiry-form-blog form select {
+    width: 100%;
+    height: 40px;
+}
+
+.enquiry-form-blog form button {
+    background-color: #C5832B;
+    border: none;
+    border-radius: 6px;
+    width: 80px;
+    height: 35px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .enquiry-form-blog h1 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .enquiry-form-blog h1 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .enquiry-form-blog h1 {
+        font-size: 14px;
+    }
+}
+
+/* Keyframes for fade-down-to-top */
+@keyframes fadeDownToTop {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Starts below the element's original position */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Ends at the element's original position */
+    }
+  }
+  
+  /* Initial state */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  /* Trigger animation */
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }

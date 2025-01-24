@@ -1,0 +1,94 @@
+  <!-- ===== HEADER ===== -->
+  <!-- <div class="nav-header">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="../../../../assets/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" [attr.aria-expanded]="isNavbarOpen" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" [ngClass]="{'show': isNavbarOpen}" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Blog</a>
+            </li>
+            <li class="nav-item">
+              <button  data-bs-toggle="modal" data-bs-target="#loginModal" class="login-btn">Login</button>>
+            </li>
+            <li class="nav-item">
+              <button data-bs-toggle="modal" data-bs-target="#registerModal" class="register-btn">Register</button>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav social-links">
+            <li><a href=""><img src="../../../../assets/whatsapp-logo.png"></a></li>
+            <li><a href=""><img src="../../../../assets/fb-logo.png"></a></li>
+            <li><a href=""><img src="../../../../assets/instagram-logo.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div> -->
+
+  <div class="nav-header">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="../../../../assets/logo.png"></a>
+        <!-- Add the (click) binding -->
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          (click)="toggleNavbar()" 
+          aria-controls="navbarNav" 
+          [attr.aria-expanded]="isNavbarOpen" 
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div 
+          class="collapse navbar-collapse" 
+          [ngClass]="{'show': isNavbarOpen}" 
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Blog</a>
+            </li>
+            <li class="nav-item">
+              <button data-bs-toggle="modal" data-bs-target="#loginModal" class="login-btn">Login</button>
+            </li>
+            <li class="nav-item">
+              <button data-bs-toggle="modal" data-bs-target="#registerModal" class="register-btn">Register</button>
+            </li>
+          </ul>
+  
+          <ul class="navbar-nav social-links">
+            <li><a href=""><img src="../../../../assets/whatsapp-logo.png"></a></li>
+            <li><a href=""><img src="../../../../assets/fb-logo.png"></a></li>
+            <li><a href=""><img src="../../../../assets/instagram-logo.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <app-login></app-login>
+  <app-register></app-register>

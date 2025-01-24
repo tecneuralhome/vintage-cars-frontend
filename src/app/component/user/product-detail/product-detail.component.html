@@ -1,0 +1,53 @@
+<section class="detail-img-slider-blog">
+  <div class="container">
+    <div class="product-checkout-box">
+      <div class="product-name">
+        <h1>PORSCHE SPEEDSTER</h1>
+        <span>show stopper</span>|<span>610 horsepower</span>|<span>actual msrp : $ 459,900</span>
+      </div>
+      <button (click)="scrollToBookingForm()">Inquire</button>
+    </div>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let image of images; let i = index" [ngClass]="{ 'carousel-item': true, active: i === 0 }">
+          <img [src]="image.src" [alt]="image.alt" class="d-block w-100" />
+        </div>
+      </div>
+      <!-- <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button> -->
+
+      <!-- Thumbnails -->
+      <div class="d-flex mt-3 thumbnail-img">
+        <img *ngFor="let image of images; let i = index" [src]="image.src" [alt]="image.alt" class="img-thumbnail mx-2"
+          [class.active]="i === activeIndex" (click)="goToSlide(i)" />
+      </div>
+    </div>
+
+    <div class="product-detail fade-up" appFadeUp>
+      <h1>gear up for the vintage - classic car rentals</h1>
+      <p>step back in time with monaco experiences and relish the charm of yesteryear with our exclusive vintage car rentals. whether you're a classic car enthusiast or planning a wedding with a touch of elegance, our collection is tailored to make your dreams come true. imagine cruising in a vintage porsche speedster 1956, feeling the blend of timeless design and modern innovation with its tesla-powered electric engine.</p>
+      <p>our vintage & classic car rental offers a unique and sophisticated touch, ensuring your big day is memorable and picturesque. choose from our exquisite lineup, including the iconic porsche speedster 1956, and make a grand entrance that echoes style and luxury.</p>
+      <p>monaco experiences specializes in providing old wedding cars that not only enhance your event but also create lasting memories. our commitment to quality and customer satisfaction ensures you have a seamless experience from start to finish. dive into nostalgia and make your special moments unforgettable with our classic car rentals. discover the perfect blend of history and modern luxury with monaco experiences, your premier destination for vintage car rentals.</p>
+    </div>
+  </div>
+
+  <app-portfolio-collections></app-portfolio-collections>
+  <app-booking-form id="inquireForm"></app-booking-form>
+</section>

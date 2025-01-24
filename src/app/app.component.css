@@ -1,0 +1,114 @@
+/* General Styles */
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: #0078d7;
+  color: white;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo a {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  margin: 0 15px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background-color: #0078d7;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav ul li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+} */
+
+/* Define the animation */
+
+
+/* Keyframes for fade-down-to-top */
+@keyframes fadeDownToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Starts below the element's original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Ends at the element's original position */
+  }
+}
+
+/* Initial state */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Trigger animation */
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}

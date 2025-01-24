@@ -1,0 +1,104 @@
+.portfolio-blog {
+    margin: 2% 0;
+}
+
+.portfolio-blog h1 {
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2%;
+    text-transform: uppercase;
+}
+
+.portfolio-blog .product-card img {
+    width: 100%;
+}
+
+.portfolio-blog .product-card {
+    position: relative;
+    margin: 3% 0;
+}
+
+.portfolio-blog .product-card .view-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 12px 12px;
+}
+
+.portfolio-blog .product-card .view-checkout span {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.portfolio-blog .product-card .view-checkout button {
+    background-color: #C5832B;
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio-blog h1 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .portfolio-blog h1 {
+        font-size: 18px;
+    }
+
+
+    .portfolio-blog .product-card .view-checkout span {
+        font-size: 10px;
+    }
+
+    .portfolio-blog .product-card .view-checkout button {
+        width: 92px;
+        height: 26px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .portfolio-blog h1 {
+        font-size: 14px;
+    }
+}
+
+
+/* Keyframes for fade-down-to-top */
+@keyframes fadeDownToTop {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Starts below the element's original position */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Ends at the element's original position */
+    }
+  }
+  
+  /* Initial state */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  /* Trigger animation */
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }

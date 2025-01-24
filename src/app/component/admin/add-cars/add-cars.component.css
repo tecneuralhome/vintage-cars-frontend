@@ -1,0 +1,38 @@
+.add-cars-blog{
+    padding: 2% 1%;
+}
+
+.add-cars-blog .add-cars-box{}
+.add-cars-blog .add-cars-box form .form-fields{
+    display: inline-grid;
+    width: 100%;
+    margin: 2% 0;
+}
+
+.add-cars-blog .add-cars-box form .form-fields input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.add-cars-blog .add-cars-box form .form-fields textarea{
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.add-cars-blog .add-cars-box form .form-fields input[type="file"] {
+    border: none;
+    border-radius: unset;
+}
+
+.add-cars-blog .add-cars-box form button{
+    background-color: #C5832B;
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+}

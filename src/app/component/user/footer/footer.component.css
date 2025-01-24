@@ -1,0 +1,103 @@
+/* ===== FOOTER BLOG ===== */
+
+.footer-blog {
+    background-color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Slab", serif;
+    padding: 2% 0;
+}
+
+.footer-blog .footer-bg h1 {
+    text-align: center;
+}
+
+.footer-blog .footer-bg p {
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer-blog .footer-bg .footer-parts {
+    margin: 2% 0;
+}
+
+.footer-blog .footer-bg .footer-parts h2 {
+    color: #C5832B;
+    font-size: 18px;
+}
+
+.footer-blog .footer-bg .footer-parts ul {
+    margin: 15px 0;
+    padding: 0;
+}
+
+.footer-blog .footer-bg .footer-parts ul li {
+    list-style-type: none;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+.footer-blog .footer-bg .footer-parts .contact-list {
+    margin: 0;
+}
+
+.footer-blog .footer-bg .footer-parts .contact-list .list-bar {
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-blog .footer-bg .footer-parts .contact-list .list-bar p {
+    margin: 0 0 0 10px;
+    text-align: left;
+}
+
+.footer-blog .footer-bg .copyrights-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #C5832B;
+    padding-top: 25px;
+}
+
+.footer-blog .footer-bg .copyrights-box .license{
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.footer-blog .footer-bg .copyrights-box .organized{
+    color: #C5832B;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-blog .footer-bg .footer-parts{
+        text-align: center;
+    }
+    .footer-blog .footer-bg .copyrights-box p{
+        font-size: 8px;
+    }
+}
+
+/* Keyframes for fade-down-to-top */
+@keyframes fadeDownToTop {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Starts below the element's original position */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Ends at the element's original position */
+    }
+  }
+  
+  /* Initial state */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  /* Trigger animation */
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }

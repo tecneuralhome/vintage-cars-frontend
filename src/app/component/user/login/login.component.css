@@ -1,0 +1,36 @@
+.modal {
+    top: 110px;
+}
+
+.modal .modal-dialog{
+    background-color: rgba(197, 131, 43, 0.26);
+}
+
+
+.modal .modal-dialog .modal-content {
+    background-color: rgba(197, 131, 43, 0.26);
+    border: none;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-header h5{
+    color: #ffffff;
+}
+
+.modal-body form label{
+    color: #ffffff;
+}
+
+.modal-body form button{
+    background-color: #C5832B;
+    border: none;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+}

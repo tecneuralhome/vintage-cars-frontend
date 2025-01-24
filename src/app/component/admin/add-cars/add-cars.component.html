@@ -1,0 +1,55 @@
+<section class="add-cars-blog">
+    <div class="add-cars-box">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                    <div class="form-fields">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" formControlName="name" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="model">Model</label>
+                        <input id="model" type="text" formControlName="model" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="price">Price</label>
+                        <input id="price" type="number" formControlName="price" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="color">Color</label>
+                        <input id="color" type="text" formControlName="color" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="brand">Brand</label>
+                        <input id="brand" type="text" formControlName="brand" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="About-car">About Car</label>
+                        <textarea id="about_car" type="text" formControlName="about_car"></textarea>
+                    </div>
+                    <div class="form-fields">
+                        <label for="image">Image</label>
+                        <input id="image" type="file" name="images" multiple (change)="onFileSelect($event)" />
+                    </div>
+                    <button type="submit" [disabled]="productForm.invalid">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Slider info update form  -->
+                <form [formGroup]="sliderForm" (ngSubmit)="onSubmitSliderForm()" enctype="multipart/form-data">
+                    <div class="form-fields">
+                        <label for="price">Position</label>
+                        <input id="price" type="number" formControlName="position" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="image">Image</label>
+                        <input id="image" type="file" name="images" (change)="onFileSelect($event)" />
+                    </div>
+                    <button type="submit" [disabled]="sliderForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>
