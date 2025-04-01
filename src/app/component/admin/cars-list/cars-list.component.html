@@ -1,0 +1,172 @@
+<div class="container mt-4" *ngIf="!selectedCar">
+  <h2 class="text-center mb-3">Car List</h2>
+
+  <!-- Search Input -->
+  <div class="mb-3 search-bar">
+    <input type="text" class="form-control" placeholder="Search by Name, Model, Price, Brand, Color..."
+      [(ngModel)]="searchTerm" (input)="filterCars()" />
+  </div>
+
+  <!-- Table -->
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filteredCars.length > 0; else noResultsTemplate">
+      <tr *ngFor="let car of filteredCars; let i = index">
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+        <td class="img-list-table">
+          <!-- <img [src]="apiUrl + (car.image[0] || '/default-image.jpg')" alt="{{ car.name }}" class="car-image" /> -->
+
+          <ng-container *ngIf="isImage(car.image[0]); else videoTemplate">
+            <img [src]="apiUrl + (car.image[0] || '/default-image.jpg')" [alt]="car.name">
+          </ng-container>
+
+
+          <ng-template #videoTemplate>
+            <video *ngIf="isVideo(car.image[0])" [src]="apiUrl + car.image[0]"></video>
+          </ng-template>
+        </td>
+        <td style="width: 250px;">{{ car.name }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.price | currency : 'INR'}}</td>
+        <td style="width: 80px;">{{ car.brand }}</td>
+        <td>{{ car.color }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="onEdit(car)">
+            Edit
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(car.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No results template -->
+<ng-template #noResultsTemplate>
+  <tr>
+    <td colspan="8" class="text-center text-muted">
+      No Cars found.
+    </td>
+  </tr>
+</ng-template>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example" *ngIf="filteredCars.length > 0 && totalCount > itemsPerPage">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">
+        <a class="page-link" href="javascript:void(0)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1" (click)="onPageChange(i + 1)">
+        <a class="page-link" href="javascript:void(0)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">
+        <a class="page-link" href="javascript:void(0)">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+</div>
+
+<div class="container" *ngIf="selectedCar">
+  <h2 class="text-center mb-3">Edit Cars</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">name</label>
+      <input type="text" id="name" class="form-control" formControlName="name"
+        [class.is-invalid]="editForm.get('name')?.invalid && editForm.get('name')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched">
+        name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="model" class="form-label">model</label>
+      <input type="text" id="model" class="form-control" formControlName="model"
+        [class.is-invalid]="editForm.get('model')?.invalid && editForm.get('model')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('model')?.invalid && editForm.get('model')?.touched">
+        model is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">price</label>
+      <input type="text" id="price" class="form-control" formControlName="price"
+        [class.is-invalid]="editForm.get('price')?.invalid && editForm.get('price')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('price')?.invalid && editForm.get('price')?.touched">
+        price is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="color" class="form-label">color</label>
+      <input type="text" id="color" class="form-control" formControlName="color"
+        [class.is-invalid]="editForm.get('color')?.invalid && editForm.get('color')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('color')?.invalid && editForm.get('color')?.touched">
+        color is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="brand" class="form-label">brand</label>
+      <input type="text" id="brand" class="form-control" formControlName="brand"
+        [class.is-invalid]="editForm.get('brand')?.invalid && editForm.get('brand')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('brand')?.invalid && editForm.get('brand')?.touched">
+        brand is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="about_car" class="form-label">about car</label>
+      <input type="text" id="about_car" class="form-control" formControlName="about_car"
+        [class.is-invalid]="editForm.get('about_car')?.invalid && editForm.get('about_car')?.touched" />
+      <div class="invalid-feedback" *ngIf="editForm.get('about_car')?.invalid && editForm.get('about_car')?.touched">
+        about car is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Car Availability</label>
+      <select id="status" class="form-control" formControlName="status">
+        <option value="1">Available</option>
+        <option value="0">Not Available</option>
+      </select>
+    </div>
+    
+    <div class="mb-3">
+      <!-- <div class="d-flex">
+        <div class="img-list" *ngFor="let img of selectedCar?.image">
+          <img [src]="apiUrl + img" class="car-image" />
+          <span (click)="deleteCarInfoImage(img)">x</span>
+        </div>
+      </div> -->
+      <div class="d-flex">
+        <div *ngFor="let media of selectedCar?.image" class="img-list">
+
+          <!-- If media is an image -->
+          <img *ngIf="isImage(media)" [src]="apiUrl + media" class="car-image" />
+
+          <!-- If media is a video -->
+          <video *ngIf="isVideo(media)" [src]="apiUrl + media" class="car-video" controls></video>
+
+          <!-- Delete Button -->
+          <span (click)="deleteCarInfoImage(media, selectedCar.id)">x</span>
+        </div>
+      </div>
+
+
+      <label for="image" class="form-label">Image</label>
+      <input id="image" type="file" class="form-control" multiple (change)="onFileSelect($event)" />
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="editForm.invalid">Save</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="editForm.reset(); selectedCar = null;">Cancel</button>
+  </form>
+</div>
+
+<app-notification></app-notification>

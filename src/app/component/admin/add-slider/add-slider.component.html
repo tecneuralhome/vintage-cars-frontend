@@ -1,0 +1,60 @@
+<section class="add-cars-blog">
+    <div class="add-cars-box">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <!-- Slider info update form  -->
+                <form *ngIf="!dltPopup" [formGroup]="sliderForm" (ngSubmit)="onSubmitSliderForm()" enctype="multipart/form-data">
+                    <div class="form-fields">
+                        <label for="price">Position</label>
+                        <input id="price" type="number" formControlName="position" />
+                    </div>
+                    <div class="form-fields">
+                        <label for="image">Image</label>
+                        <input id="image" type="file" name="images" (change)="onFileSelectSliderForm($event)" />
+                    </div>
+                    <button type="submit" [disabled]="sliderForm.invalid">Submit</button>
+                </form>
+
+                <div *ngIf="dltPopup" class="dltpopup">
+                    <p>This position is already exist. delete previous slide or change your position.</p>
+                    <span> Do you want to delete ?</span>
+                   <div class="dltbox">
+                    <button class="dlt-btn" (click)="deleteSlide()">delete</button>
+                    <button class="cl-btn" (click)="cancel()">cancel</button>
+                   </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Position</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let slide of slides; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <ng-container [ngSwitch]="getImageType(slide.image)">
+                <img *ngSwitchCase="'image'" [src]="apiUrl + slide.image" alt="Slide Image" width="100" height="50">
+                <video *ngSwitchCase="'video'" [src]="apiUrl + slide.image" controls width="100" height="50"></video>
+                <span *ngSwitchDefault>No Preview</span>
+              </ng-container>
+            </td>
+            <td>{{ slide.position }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="deleteSlideFromtable(slide.position)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+</section>
+
+<app-notification></app-notification>

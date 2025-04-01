@@ -1,0 +1,89 @@
+.add-cars-blog{
+    padding: 2% 1%;
+}
+
+.add-cars-blog .add-cars-box{}
+.add-cars-blog .add-cars-box form{
+    width: 60%;
+    margin: 0 auto;
+}
+.add-cars-blog .add-cars-box form .form-fields{
+    display: inline-grid;
+    width: 100%;
+    margin: 2% 0;
+}
+
+.add-cars-blog .add-cars-box form .form-fields input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.add-cars-blog .add-cars-box form .form-fields textarea{
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.add-cars-blog .add-cars-box form .form-fields input[type="file"] {
+    border: none;
+    border-radius: unset;
+}
+
+.add-cars-blog .add-cars-box form button{
+    background-color: #b88b2b;
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.dltpopup{
+    width: 60%;
+    margin: 5% auto;
+    background-color: #ffebd0;
+    padding: 3% 5%;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.dltpopup p{}
+
+.dltpopup span{
+    color: #b88b2b;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.dltpopup .dltbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4% 0;
+}
+
+.dltpopup .dltbox .dlt-btn{
+    background-color: #b88b2b;
+    color: #ffffff;
+    border: none;
+    width: 70px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.dltpopup .dltbox .cl-btn{
+    background-color: #ffffff;
+    color: #b88b2b;
+    border: 1px solid #b88b2b;
+    width: 70px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.add-cars-blog table{
+    margin: 3% 0;
+}

@@ -3,13 +3,17 @@
 }
 
 .add-cars-blog .add-cars-box{}
+.add-cars-blog .add-cars-box form{
+    width: 60%;
+    margin: 0 auto;
+}
 .add-cars-blog .add-cars-box form .form-fields{
     display: inline-grid;
     width: 100%;
     margin: 2% 0;
 }
 
-.add-cars-blog .add-cars-box form .form-fields input{
+.add-cars-blog .add-cars-box form .form-fields input,select{
     height: 40px;
     border-radius: 5px;
     border: 1px solid black;
@@ -27,7 +31,7 @@
 }
 
 .add-cars-blog .add-cars-box form button{
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     width: 100px;
     height: 30px;

@@ -11,12 +11,32 @@
 }
 
 .portfolio-blog .product-card img {
+    height: 360px;
     width: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 12px 12px;
+}
+
+.portfolio-blog .product-card .coming-soon{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    right: 0;
+}
+
+.portfolio-blog .product-card video {
+    height: 360px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 12px 12px;
 }
 
 .portfolio-blog .product-card {
+    display: block;
     position: relative;
     margin: 3% 0;
+    cursor: pointer;
 }
 
 .portfolio-blog .product-card .view-checkout {
@@ -38,7 +58,7 @@
 }
 
 .portfolio-blog .product-card .view-checkout button {
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     width: 100px;
     height: 30px;

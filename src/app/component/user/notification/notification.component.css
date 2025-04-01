@@ -1,0 +1,38 @@
+:host {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1060; /* Higher than other elements */
+    display: block; /* Ensure it takes up space */
+    pointer-events: none; /* Allows clicks to pass through unless explicitly needed */
+  }
+  
+  .notification {
+    pointer-events: auto; /* Enable interaction for the notification content */
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fade-in 0.5s ease-out;
+  }
+  
+  .notification.error {
+    background: #f44336;
+  }
+  
+  .notification button {
+    border: none;
+    background-color: transparent;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,5 +1,6 @@
 .modal {
-    top: 110px;
+    top: 80px;
+    backdrop-filter: blur(30px);
 }
 
 .modal .modal-dialog{
@@ -25,7 +26,7 @@
 }
 
 .modal-body form button{
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     width: 90px;
     height: 35px;

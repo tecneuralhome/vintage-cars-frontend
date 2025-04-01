@@ -1,32 +1,42 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, ViewChild, EventEmitter, OnInit, Output, Renderer2, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr'; // Import ToastrService
-// import bootstrap from 'bootstrap';
+import { NotificationComponent } from '../notification/notification.component';
+import { NotificationService } from '../../../services/notification.service';
+
+
+
 
 @Component({
   selector: 'app-register',
   standalone: true, // Standalone component for Angular 14+ (optional)
-  imports: [ReactiveFormsModule, CommonModule], // Include necessary imports
+  imports: [ReactiveFormsModule, CommonModule, NotificationComponent], // Include necessary imports
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, AfterViewInit {
+export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   showOtpStep: boolean = false;
   isModalVisible: boolean = false;
+  countdown: number = 180; // 3 minutes in seconds
+  isResendEnabled: boolean = false;
+  timerInterval: any;
 
-  @ViewChild('registerModal') registerModal!: ElementRef;
+  @Output() registerSuccess = new EventEmitter<void>();
+  @Output() registerFailed = new EventEmitter<void>();
+
+  @ViewChild('closeBtn') closeBtn!: ElementRef;
+
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private toastr: ToastrService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private notificationService: NotificationService
   ) {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       number: [
         '',
@@ -39,12 +49,27 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this.registerForm.get('otp')?.disable();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  ngAfterViewInit(): void {
-    // Bootstrap modal initialization (optional)
-    // You can use this to check or manipulate modal if needed
+  startCountdown(): void {
+    this.countdown = 180; // Reset timer
+    this.isResendEnabled = false;
+
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+
+    this.timerInterval = setInterval(() => {
+      if (this.countdown > 0) {
+        this.countdown--;
+      } else {
+        clearInterval(this.timerInterval);
+        this.isResendEnabled = true;
+      }
+    }, 1000);
   }
+
+
 
   onRegister(): void {
     console.log("showOtpStep", this.showOtpStep);
@@ -61,12 +86,18 @@ export class RegisterComponent implements OnInit, AfterViewInit {
           number: formData.number,
           usertype: "user",
           otp: formData.otp
-        }).subscribe(result => {
-          console.log('Register API Response:', result);
-          // this.closeModal();
-          // this.removeClass()
-           // Show success toaster
-        this.toastr.success('Registration successful!', 'Success');
+        }).subscribe({
+          next: result => {
+            console.log('Register API Response:', result);
+            this.registerSuccess.emit()
+            this.closeBtn?.nativeElement.click();
+            this.showOtpStep = false;
+          }, error: (error) => {
+            this.registerFailed.emit()
+            this.registerForm.reset()
+            this.closeBtn?.nativeElement.click();
+            this.showOtpStep = false;
+          }
         });
       }
     } else {
@@ -74,44 +105,43 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.authService.otp({
           number: this.registerForm.value.number,
           type: 'register'
-        }).subscribe(result => {
-          console.log('OTP API Response:', result);
-          this.showOtpStep = true;
-          this.registerForm.get('otp')?.enable();
-        });
+        }).subscribe({
+          next: (result) => {
+            console.log(result)
+            this.showOtpStep = true;
+            this.registerForm.get('otp')?.enable();
+            this.notificationService.showNotification(result.message, 'success');
+            this.startCountdown();
+          },
+          error: (error) => {
+            console.log(error)
+            this.notificationService.showNotification("This number or email already exists!!!", 'error');
+          }
+        })
       }
     }
   }
 
-  // closeModal(): void {
-  //   if (this.registerModal) {
-  //     const modalElement = this.registerModal.nativeElement;
-  //     const modalInstance = bootstrap.Modal.getInstance(modalElement); 
-  //     if (modalInstance) {
-  //       modalInstance.hide(); 
-  //     }
-  //   }
-  // }
-
-  removeClass() {
-    // const modal = document.getElementById('registerModal');
-    // if (modal) {
-    //   this.renderer.removeClass(modal, 'show');
-    //   this.renderer.setStyle(modal, 'display', 'none'); 
-    //   this.renderer.removeAttribute(modal, 'role'); 
-    // }
-
-    // const body = document.body;
-    // this.renderer.removeClass(body, 'modal-open');
-    // this.renderer.removeStyle(body, 'overflow'); 
-    // this.renderer.removeStyle(body, 'padding-right'); 
-    // this.renderer.removeAttribute(body, 'data-bs-overflow');
-    // this.renderer.removeAttribute(body, 'data-bs-padding-right'); 
-
-    // const backdrops = document.querySelectorAll('.modal-backdrop.fade.show');
-    // backdrops.forEach((backdrop) => {
-    //   this.renderer.removeClass(backdrop, 'show'); // Remove the 'show' class
-    // });
-  
+  resendOtp(): void {
+    if (this.isResendEnabled) {
+      this.authService.otp({
+        number: this.registerForm.value.number,
+        type: 'register'
+      }).subscribe({
+        next: () => {
+          this.notificationService.showNotification('OTP Resent!', 'success');
+          this.startCountdown();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
   }
+
+ 
+    
+
+
 }
+

@@ -1,0 +1,71 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  h2 {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .car-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .page-item.disabled .page-link {
+    pointer-events: none;
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+  }
+  
+  .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .img-list{
+    position: relative;
+    display: flex;
+    margin: 0 10px;
+  }
+
+  .img-list span{
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    padding: 1px 6px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .img-list-table img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  .img-list-table video{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  .search-bar input{
+    width: 50%;
+    margin: 4% auto;
+  }

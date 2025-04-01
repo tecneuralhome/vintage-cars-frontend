@@ -2,6 +2,10 @@
     background-color: rgba(197, 131, 43, 0.26);
 }
 
+.modal {
+   
+    backdrop-filter: blur(30px);
+}
 
 .modal .modal-dialog .modal-content {
     background-color: rgba(197, 131, 43, 0.26);
@@ -21,7 +25,7 @@
 }
 
 .modal-body form button{
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     width: auto;
     height: 35px;
@@ -29,4 +33,18 @@
     text-transform: uppercase;
     color: #ffffff;
     font-size: 14px;
+}
+
+.timer-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer-box .text-muted{
+    color: #ffffff !important;
+}
+
+.timer-box button{
+    background-color: unset !important;
 }

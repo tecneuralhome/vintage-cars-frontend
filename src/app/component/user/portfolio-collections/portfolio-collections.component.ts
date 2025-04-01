@@ -1,38 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FadeUpDirective } from '../fade-up.directive';
 import { CommonModule } from '@angular/common';
+import { CarService } from '../../../services/car.service';
+import { RouterModule, Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-portfolio-collections',
-  imports: [FadeUpDirective, CommonModule],
+  imports: [FadeUpDirective, CommonModule, RouterModule ],
   templateUrl: './portfolio-collections.component.html',
   styleUrl: './portfolio-collections.component.css'
 })
-export class PortfolioCollectionsComponent {
-  products = [
-    {
-      image: 'assets/DSC01592.png',
-      name: 'Plymouth Belvedere- 1955 Turquoise Blue',
-    },
-    {
-      image: 'assets/8e9933bd-3fa4-432a-a4b5-2adc80e9de1b (1).png',
-      name: 'Hindustan Ambassador Mark 1 - 1959 - Black',
-    },
-    {
-      image: 'assets/DSC01381.png',
-      name: 'Hindustan Contessa Classic - Crystal white - 1995',
-    },
-    {
-      image: 'assets/IMG_3733.png',
-      name: 'Ford GPW - 1942 - olive Green',
-    },
-    {
-      image: 'assets/fbd592a9-92cb-4641-a403-e5a499ac4863.png',
-      name: 'Mercedes benz - 1962 - present blue',
-    },
-    {
-      image: 'assets/image.png',
-      name: 'Maruti 800',
-    },
-  ];
+export class PortfolioCollectionsComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  constructor(private carService: CarService, private router: Router
+   
+  ) {}
+
+
+  products: any[] = []; // To store fetched products
+
+  ngOnInit(): void {
+    this.fetchCars();
+  }
+
+
+  fetchCars(): void {
+    const params = {
+      page: 1,
+      limit: 10,
+    };
+
+    this.carService.getCars(params).subscribe({
+      next: (data) => {
+        console.log("data cars",data)
+        this.products = data.cars; 
+        console.log(this.products)
+      },
+      error: (error) => {
+        console.error('Error fetching cars:', error);
+      },
+    });
+  }
+
+  isImage(media: string): boolean {
+    if (!media) return false;
+    const imageExtensions = ["jpg", "jpeg", "png", "gif"];
+    const extension = media.split('.').pop()?.toLowerCase();
+    return imageExtensions.includes(extension || "");
+  }
+  
+  goToDetailPage(id: any) {
+    console.log('Product Detail page clicked:', id);
+    const stateData = { id: id }; // Example state data
+    this.router.navigate(['/detail-page'], { queryParams: stateData });
+    // this.router.navigate(['/detail-page'], { state: stateData });
+  }
 }

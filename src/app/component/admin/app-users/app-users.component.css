@@ -1,0 +1,45 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.search-bar input {
+  width: 50%;
+  margin: 4% auto;
+}
+
+.table span{
+  font-size: 10px;
+    margin-left: 5px;
+}
+
+.table .order-icon {
+  font-size: 7px;
+  color: black;
+  background-color: WHITE;
+  padding: 3px;
+  border-radius: 15px;
+}

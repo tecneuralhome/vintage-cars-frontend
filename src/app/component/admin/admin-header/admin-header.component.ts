@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AddCarsComponent } from '../add-cars/add-cars.component';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
-import { NotificationsComponent } from '../notifications/notifications.component';
+import { AdminNotificationComponent } from '../admin-notification/admin-notification.component';
 
 
 @Component({
   selector: 'app-admin-header',
-  imports: [RouterOutlet,AddCarsComponent,NotificationsComponent],
+  imports: [RouterOutlet,AddCarsComponent,AdminNotificationComponent],
   templateUrl: './admin-header.component.html',
   styleUrl: './admin-header.component.css'
 })
 export class AdminHeaderComponent {
+
+   @Output() adminRes = new EventEmitter<void>(); 
+   
   constructor(private router: Router) {}
 
   navigateToAddCars() {
@@ -22,9 +25,30 @@ export class AdminHeaderComponent {
   }
 
   navigateTonotifi(){
-    this.router.navigate(['/notifications']).then((success) => {
+    this.router.navigate(['/booking-managements']).then((success) => {
       console.log('Navigation successful:', success);
     });
   }
- 
+
+  navigateToAddSlider(){
+    this.router.navigate(['/add-slider-content']).then((success) => {
+      console.log('Navigation successful:', success);
+    });
+  }
+
+  navigateToUsers(){
+    this.router.navigate(['/user-list']).then((success) => {
+      console.log('Navigation successful:', success);
+    });
+  }
+
+  navigateToCarsList(){
+    this.router.navigate(['/cars-list']).then((success) => {
+      console.log('Navigation successful:', success);
+    });
+  }
+  
+  logOut(){
+    this.adminRes.emit()
+  }
 }

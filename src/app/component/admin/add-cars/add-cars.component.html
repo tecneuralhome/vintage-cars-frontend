@@ -1,7 +1,7 @@
 <section class="add-cars-blog">
     <div class="add-cars-box">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                     <div class="form-fields">
                         <label for="name">Name</label>
@@ -28,14 +28,20 @@
                         <textarea id="about_car" type="text" formControlName="about_car"></textarea>
                     </div>
                     <div class="form-fields">
+                        <label for="status">Car Availability</label>
+                        <select id="status" formControlName="status">
+                            <option [value]="1">Available</option>
+                            <option [value]="0">Not Available</option>
+                        </select>
+                    </div>
+                    <div class="form-fields">
                         <label for="image">Image</label>
                         <input id="image" type="file" name="images" multiple (change)="onFileSelect($event)" />
                     </div>
                     <button type="submit" [disabled]="productForm.invalid">Submit</button>
                 </form>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
-                <!-- Slider info update form  -->
+            <!-- <div class="col-sm-12 col-md-12 col-lg-6">
                 <form [formGroup]="sliderForm" (ngSubmit)="onSubmitSliderForm()" enctype="multipart/form-data">
                     <div class="form-fields">
                         <label for="price">Position</label>
@@ -47,9 +53,11 @@
                     </div>
                     <button type="submit" [disabled]="sliderForm.invalid">Submit</button>
                 </form>
-            </div>
+            </div> -->
         </div>
 
 
     </div>
 </section>
+
+<app-notification></app-notification>

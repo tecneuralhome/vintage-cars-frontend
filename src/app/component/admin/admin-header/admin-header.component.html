@@ -3,10 +3,19 @@
     <h4><img src="assets/logo.png"></h4>
     <ul class="nav flex-column">
       <li class="nav-item">
+        <a class="nav-link" (click)="navigateToCarsList()">My Cars</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" (click)="navigateToAddCars()">Add Cars</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="navigateTonotifi()">Notifications</a>
+        <a class="nav-link" (click)="navigateToAddSlider()">Add Slider</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigateTonotifi()">Bookings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigateToUsers()">Users</a>
       </li>
     </ul>
   </div>
@@ -15,7 +24,7 @@
   <div class="main-content">
     <header class="d-flex justify-content-between align-items-center py-3 border-bottom">
       <h1>Hello Admin!</h1>
-      <button class="btn btn-primary">Action</button>
+      <button class="btn btn-primary" (click)="logOut()">Logout</button>
     </header>
     <div>
       <!-- Car info update form  -->

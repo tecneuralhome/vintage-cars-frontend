@@ -5,22 +5,76 @@
 
 /* ===== BANNER ===== */
 
+.slider-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .media-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+  }
+  
+
 .banner-blog {
     margin-top: 5.7%;
 }
 
-.banner-blog .banner-bg {
+.banner-blog .slider-container{
+    position: relative;
+}
+
+.banner-blog .slider-container .main-heading{
+    position: absolute;
+    text-align: center;
+    margin: 13% 28%;
+    z-index: 999;
+}
+
+.banner-blog .slider-container .main-heading h1{
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    margin-top: 5% ;
+    text-transform: uppercase;
+}
+
+.banner-blog .slider-container .main-heading p{
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 1% 0;
+    text-transform: uppercase;
+}
+
+.banner-blog .slider-container .media-slide{
     width: 100%;
-    /* Ensure it spans the full width of the screen */
     height: 100vh;
-    /* Makes the banner take up the full viewport height */
+    text-align: center;
+    object-fit: cover;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* .banner-blog .banner-bg {
+    width: 100%;
+    height: 100vh;
     background-image: url('../../../../assets/banner.png');
     background-size: cover;
-    /* Ensures the image covers the entire container */
     background-position: center;
-    /* Centers the image */
     background-repeat: no-repeat;
-    /* Prevents the image from repeating */
     padding-top: 12%;
     text-align: center;
 }
@@ -39,7 +93,7 @@
     font-size: 20px;
     margin: 1% 0;
     text-transform: uppercase;
-}
+} */
 
 
 /* ===== BLOG SECTION ===== */
@@ -55,7 +109,7 @@
 .blogs-blog .blog-box-one .blog-content p {
     color: #ffffff;
     text-align: justify;
-    line-height: 40px;
+    line-height: 33px;
 }
 
 .blogs-blog .blog-box-one .blog-banner img {
@@ -81,59 +135,12 @@
 
 .blogs-blog .blog-box-two .blog-grid img {
     width: 100%;
+    height: 430px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
-/* ===== PORTFOLIO BLOG ===== */
 
-/* .portfolio-blog {
-    margin: 2% 0;
-}
-
-.portfolio-blog h1 {
-    font-size: 30px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 2%;
-    text-transform: uppercase;
-}
-
-.portfolio-blog .product-card img {
-    width: 100%;
-}
-
-.portfolio-blog .product-card {
-    position: relative;
-    margin: 3% 0;
-}
-
-.portfolio-blog .product-card .view-checkout {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
-    border-radius: 0 0 12px 12px;
-}
-
-.portfolio-blog .product-card .view-checkout span {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.portfolio-blog .product-card .view-checkout button {
-    background-color: #C5832B;
-    border: none;
-    width: 100px;
-    height: 30px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    color: #ffffff;
-    font-size: 14px;
-} */
 
 /* ===== SERVICE BLOG ===== */
 
@@ -156,13 +163,42 @@
     text-transform: uppercase;
 }
 
+.service-blog .service-right{
+    background-image: url('../../../../assets/service-right.jpg');
+}
+
+.service-blog .service-left{
+    background-image: url('../../../../assets/service-left.jpg');
+}
+
+.service-blog .service-middle{
+    background-image: url('../../../../assets/service-middle.jpg');
+}
+
+.service-blog .service-content{
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    z-index: 999;
+}
+
 .service-blog .service-card-bg {
-    background-image: url('../../../../assets/service-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 4% 0;
     padding: 5% 5%;
+    position: relative;
+    height: 315px;
+}
+
+.service-blog .service-card-bg .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .service-blog .service-card-bg p {
@@ -180,69 +216,18 @@
 }
 
 .service-blog .service-card-bg button {
+    position: absolute;
+    bottom: 20px;
     background-color: transparent;
-    border: 2px solid #C5832B;
+    border: 2px solid #b88b2b;
     border-radius: 6px;
     width: 100px;
     height: 35px;
     color: #ffffff;
     font-size: 14px;
     text-transform: uppercase;
+    z-index: 999;
 }
-
-/* ===== ENQUIRY FORM ===== */
-
-
-/* .enquiry-form-blog {
-    margin: 2% 0;
-}
-
-.enquiry-form-blog h1 {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 30px;
-    text-align: center;
-}
-
-.enquiry-form-blog form {
-    margin: 2% 0;
-    padding: 4%;
-    background-color: rgba(197, 131, 43, 0.26);
-    border-radius: 12px;
-}
-
-.enquiry-form-blog form .form-group {
-    margin: 10px 0;
-}
-
-.enquiry-form-blog form label {
-    display: block;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-.enquiry-form-blog form input {
-    width: 100%;
-    height: 40px;
-}
-
-.enquiry-form-blog form select {
-    width: 100%;
-    height: 40px;
-}
-
-.enquiry-form-blog form button {
-    background-color: #C5832B;
-    border: none;
-    border-radius: 6px;
-    width: 80px;
-    height: 35px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 14px;
-} */
-
 
 /* ===== FAQ BLOG ===== */
 
@@ -270,7 +255,7 @@
 }
 
 .faq-blog .faq-view-btn button {
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     border-radius: 6px;
     width: 120px;
@@ -304,7 +289,7 @@
 
 .accordion-collapse {
     background-color: rgba(0, 0, 0, 0.25);
-    color: #C5832B;
+    color: #b88b2b;
     font-size: 18px;
 }
 
@@ -355,7 +340,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .banner-blog .banner-bg h1 {
+    .banner-blog .slider-container .main-heading h1 {
         font-size: 30px;
         margin: 15% 12% 0% 12%;
     }
@@ -390,7 +375,7 @@
 }
 
 @media screen and (max-width: 585px) {
-    .banner-blog .banner-bg h1 {
+    .banner-blog .slider-container .main-heading h1 {
         font-size: 24px;
         margin: 25% 12% 0% 12%;
     }
@@ -422,11 +407,11 @@
     .banner-blog .banner-bg {
         background-size: unset;
     }
-    .banner-blog .banner-bg h1 {
+    .banner-blog .slider-container .main-heading h1 {
         font-size: 16px;
         margin: 35% 12% 0% 12%;
     }
-    .banner-blog .banner-bg p {
+    .banner-blog .slider-container .main-heading p {
         font-size: 12px;
     }
     .blogs-blog .blog-box-one h2 {font-size: 11px;}

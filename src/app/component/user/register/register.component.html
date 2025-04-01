@@ -4,8 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="registerModalLabel">Register</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      <button (click)="removeClass()">test</button>
+        <button #closeBtn type="button" id="close-btn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
@@ -15,9 +14,9 @@
               <label for="username" class="form-label">Username</label>
               <input type="text" id="username" class="form-control" formControlName="username"
                 [class.is-invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" />
-              <div class="invalid-feedback">Username is required.</div>
+              <div class="invalid-feedback">Username must be at least 6 characters.</div>
             </div>
-        
+
             <!-- Email Field -->
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
@@ -25,7 +24,7 @@
                 [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" />
               <div class="invalid-feedback">Please enter a valid email address.</div>
             </div>
-        
+
             <!-- Number Field -->
             <div class="mb-3">
               <label for="number" class="form-label">Number</label>
@@ -33,7 +32,7 @@
                 [class.is-invalid]="registerForm.get('number')?.invalid && registerForm.get('number')?.touched" />
               <div class="invalid-feedback">Please enter a valid 10-digit number.</div>
             </div>
-        
+
             <!-- Password Field -->
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
@@ -42,17 +41,40 @@
               <div class="invalid-feedback">Password must be at least 6 characters.</div>
             </div>
           </ng-container>
-        
+
           <!-- OTP Field -->
+          <!-- <ng-container *ngIf="showOtpStep">
+            <div class="mb-3">
+              <label for="otp" class="form-label">OTP</label>
+              <input type="text" id="otp" class="form-control" formControlName="otp"
+                [class.is-invalid]="registerForm.get('otp')?.invalid && registerForm.get('otp')?.touched" />
+              <div class="invalid-feedback test">OTP is required.</div>
+            </div>
+          </ng-container> -->
+
           <ng-container *ngIf="showOtpStep">
             <div class="mb-3">
               <label for="otp" class="form-label">OTP</label>
               <input type="text" id="otp" class="form-control" formControlName="otp"
                 [class.is-invalid]="registerForm.get('otp')?.invalid && registerForm.get('otp')?.touched" />
               <div class="invalid-feedback">OTP is required.</div>
+
+              <!-- Countdown Timer -->
+              <!-- Countdown Timer -->
+              <div class="timer-box">
+                <div *ngIf="!isResendEnabled" class="text-muted mt-2">
+                  Resend OTP in {{ countdown | number:'2.0' }} seconds
+                </div>
+
+                <!-- Resend OTP Button -->
+                <button type="button" class="btn btn-link mt-2" (click)="resendOtp()" [disabled]="!isResendEnabled">
+                  Resend OTP
+                </button>
+              </div>
             </div>
           </ng-container>
-        
+
+
           <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
             {{ showOtpStep ? 'Submit OTP' : 'Register' }}
           </button>
@@ -61,3 +83,5 @@
     </div>
   </div>
 </div>
+
+<app-notification></app-notification>

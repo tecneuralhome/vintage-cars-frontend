@@ -1,18 +1,19 @@
 img.active {
-  border: 2px solid #C5832B;
+  border: 2px solid #b88b2b;
   opacity: 0.7;
 }
 
 .detail-img-slider-blog {
   padding-top: 8%;
   background-color: #000000;
+  font-family: "Roboto Slab", serif;
 }
 
 .detail-img-slider-blog .product-checkout-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #C5832B;
+  color: #b88b2b;
   margin-bottom: 2%;
 }
 
@@ -21,12 +22,12 @@ img.active {
 }
 
 .detail-img-slider-blog .product-checkout-box span{
-  color: #C5832B;
+  color: #b88b2b;
   margin: 0 5px;
 }
 
 .detail-img-slider-blog .product-checkout-box button{
-  background-color: #C5832B;
+  background-color: #b88b2b;
     border: none;
     width: 110px;
     height: 45px;
@@ -46,10 +47,20 @@ img.active {
   height: 160px;
   border-radius: 12px;
   background-color: unset;
+  object-fit: cover;
+
 }
 
 .detail-img-slider-blog .carousel-inner img {
   border-radius: 12px;
+  height: 700px;
+    object-fit: cover;
+}
+
+.detail-img-slider-blog .carousel-inner video {
+  border-radius: 12px;
+  height: 700px;
+    object-fit: cover;
 }
 
 .detail-img-slider-blog .product-detail {
@@ -91,4 +102,19 @@ img.active {
 .fade-up.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+@media screen and (max-width: 768px) {
+  .detail-img-slider-blog .thumbnail-img img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .detail-img-slider-blog .thumbnail-img img {
+    width: 70px;
+    height: 70px;
+  }
 }

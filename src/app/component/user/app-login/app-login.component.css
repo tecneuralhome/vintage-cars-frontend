@@ -1,0 +1,34 @@
+:host {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050; /* Higher than other elements */
+    display: block; /* Ensure it takes up space */
+    pointer-events: none; /* Allows clicks to pass through unless explicitly needed */
+  }
+  
+  .appLogin {
+    pointer-events: auto; /* Enable interaction for the appLogin content */
+    background: #4caf50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fade-in 0.5s ease-out;
+  }
+  
+  .appLogin.error {
+    background: #f44336;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

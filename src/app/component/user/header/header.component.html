@@ -41,7 +41,7 @@
 
   <div class="nav-header">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
+      <div class="container p-0">
         <a class="navbar-brand" href=""><img src="assets/logo.png"></a>
         <!-- Add the (click) binding -->
         <button 
@@ -64,7 +64,7 @@
               <a class="nav-link" href="">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Service</a>
+              <a class="nav-link" (click)="onCollectionsClick()">Collections</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">About</a>
@@ -72,23 +72,30 @@
             <li class="nav-item">
               <a class="nav-link" href="">Blog</a>
             </li>
-            <li class="nav-item">
-              <button data-bs-toggle="modal" data-bs-target="#loginModal" class="login-btn">Login</button>
+            <li class="nav-item" *ngIf="userIn">
+              <button class="nav-link my-profile" (click)="userProfile()">My Profile</button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="userIn">
+              <button class="register-btn" (click)="logOut()">Log Out</button>
+            </li>
+            <li class="nav-item" *ngIf="!userIn">
+              <button data-bs-toggle="modal" data-bs-target="#loginModal" id="loginActive" class="login-btn">Login</button>
+            </li>
+            <li class="nav-item" *ngIf="!userIn">
               <button data-bs-toggle="modal" data-bs-target="#registerModal" class="register-btn">Register</button>
             </li>
           </ul>
   
           <ul class="navbar-nav social-links">
-            <li><a href=""><img src="assets/whatsapp-logo.png"></a></li>
+            <li><a href="https://www.instagram.com/keynclassics?igsh=MWhqN3Z2ZzV2bXYwag=="><img src="assets/instagram-logo.png"></a></li>
             <li><a href=""><img src="assets/fb-logo.png"></a></li>
-            <li><a href=""><img src="assets/instagram-logo.png"></a></li>
+            <li><a href=""><img src="assets/whatsapp-logo.png"></a></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
 
-  <app-login></app-login>
-  <app-register></app-register>
+  <app-notification></app-notification>
+  <app-login (loginSuccess)="loginInfo()" (loginType)="adminLogin()" (loginFailed)="handleLoginFailure()"></app-login>
+  <app-register (registerSuccess)="regSuccess()" (registerFailed)="regFailed()"></app-register>

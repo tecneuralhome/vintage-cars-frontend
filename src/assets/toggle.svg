@@ -4,6 +4,6 @@
 <path d="M4 7H26M4 15H26M4 23H26" stroke="black" stroke-opacity="0.55" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
 </mask>
 <g mask="url(#mask0_202_384)">
-<rect x="-3" width="33" height="36" fill="#C5832B"/>
+<rect x="-3" width="33" height="36" fill="#b88b2b"/>
 </g>
 </svg>

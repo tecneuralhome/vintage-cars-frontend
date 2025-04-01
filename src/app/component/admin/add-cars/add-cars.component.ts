@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , ReactiveFormsModule } from '@angular/forms';
 import { CarService } from "../../../services/car.service";
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { NotificationComponent } from '../../user/notification/notification.component';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-add-cars',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterOutlet, NotificationComponent],
   templateUrl: './add-cars.component.html',
   styleUrl: './add-cars.component.css'
 })
@@ -14,14 +17,15 @@ export class AddCarsComponent {
   selectedImage: File[] | null = null;
   selectedImageSliderForm: File | null = null;
 
-  constructor(private fb: FormBuilder, private carService: CarService) {
+  constructor(private fb: FormBuilder, private carService: CarService, private router:Router, private notificationService: NotificationService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       model: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       color: ['', Validators.required],
       brand: ['', Validators.required],
-      about_car: ['', Validators.required]
+      about_car: ['', Validators.required],
+      status: [1, Validators.required]
     });
     this.sliderForm = this.fb.group({
       position: ['', Validators.required],
@@ -49,7 +53,8 @@ export class AddCarsComponent {
       formData.append('price', this.productForm.get('price')?.value);
       formData.append('color', this.productForm.get('color')?.value);
       formData.append('brand', this.productForm.get('brand')?.value);
-      formData.append('about_car', this.productForm.get('about_car')?.value)
+      formData.append('about_car', this.productForm.get('about_car')?.value);
+      formData.append('status', this.productForm.get('status')?.value);
       
       if (this.selectedImage) {
         this.selectedImage.forEach((file) => {
@@ -58,10 +63,15 @@ export class AddCarsComponent {
       }
       this.carService.registerCarInfo(formData).subscribe((result:any) =>{
         console.log("===== REGISTER CAR INFO API RESULT =====", result)
+        this.productForm.reset()
       })
 
       // Example: Submit formData to the backend
       console.log('Form Submitted:', formData);
+      this.notificationService.showNotification('New Car Added!', 'success');
+      setTimeout(() => {
+        this.router.navigate(['/cars-list']);
+      }, 3000);
     }
   }
   onSubmitSliderForm(): void {

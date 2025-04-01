@@ -10,7 +10,14 @@
      font-weight: 500;
      font-style: normal;
      font-size: 16px;
-     color: #C5832B;
+     color: #b88b2b;
+     text-transform: uppercase;
+ }
+
+ .nav-header nav .social-links a img{
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
  }
 
  .nav-header .navbar-nav {
@@ -31,7 +38,7 @@
 
 .navbar-nav .login-btn{
     background-color: transparent;
-    border: 2px solid #C5832B;
+    border: 2px solid #b88b2b;
     border-radius: 6px;
     width: 90px;
     height: 35px;
@@ -42,7 +49,7 @@
 }
 
 .navbar-nav .register-btn{
-    background-color: #C5832B;
+    background-color: #b88b2b;
     border: none;
     width: 90px;
     height: 35px;
@@ -53,13 +60,27 @@
     margin: 0 5px;
 }
 
+.my-profile{
+    margin: 0 15px;
+    cursor: pointer;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    color: #b88b2b !important;
+}
+
 @media screen and (max-width: 992px) {
+    .nav-header .navbar-nav {
+        margin-left: 20px;
+    }
     .navbar-nav .register-btn{
-        margin: 8px 0;
+        margin: 8px 0 8px 14px;
     }
 
     .navbar-nav .login-btn{
-        margin: 8px 0;
+        margin: 8px 0 8px 14px;
     }
+
+    
 }
 
