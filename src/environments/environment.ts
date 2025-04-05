@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://keynclassics.in/',
+  apiUrl: 'https://api.keynclassics.in/',
   debugMode: true,
 };

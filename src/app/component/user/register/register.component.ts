@@ -71,54 +71,100 @@ export class RegisterComponent implements OnInit {
 
 
 
+  // onRegister(): void {
+  //   console.log("showOtpStep", this.showOtpStep);
+
+  //   if (this.showOtpStep) {
+  //     this.registerForm.get('otp')?.enable();
+
+  //     if (this.registerForm.valid) {
+  //       const formData = this.registerForm.value;
+  //       this.authService.signUp({
+  //         username: formData.username,
+  //         email: formData.email,
+  //         password: formData.password,
+  //         number: formData.number,
+  //         usertype: "user",
+  //         otp: formData.otp
+  //       }).subscribe({
+  //         next: result => {
+  //           console.log('Register API Response:', result);
+  //           this.registerSuccess.emit()
+  //           this.closeBtn?.nativeElement.click();
+  //           this.showOtpStep = false;
+  //         }, error: (error) => {
+  //           this.registerFailed.emit()
+  //           this.registerForm.reset()
+  //           this.closeBtn?.nativeElement.click();
+  //           this.showOtpStep = false;
+  //         }
+  //       });
+  //     }
+  //   } else {
+  //     if (this.registerForm.valid) {
+  //       this.authService.otp({
+  //         number: this.registerForm.value.number,
+  //         type: 'register'
+  //       }).subscribe({
+  //         next: (result) => {
+  //           console.log(result)
+  //           this.showOtpStep = true;
+  //           this.registerForm.get('otp')?.enable();
+  //           this.notificationService.showNotification(result.message, 'success');
+  //           this.startCountdown();
+  //         },
+  //         error: (error) => {
+  //           console.log(error)
+  //           this.notificationService.showNotification("This number or email already exists!!!", 'error');
+  //         }
+  //       })
+  //     }
+  //   }
+  // }
   onRegister(): void {
     console.log("showOtpStep", this.showOtpStep);
-
-    if (this.showOtpStep) {
-      this.registerForm.get('otp')?.enable();
-
-      if (this.registerForm.valid) {
-        const formData = this.registerForm.value;
-        this.authService.signUp({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-          number: formData.number,
-          usertype: "user",
-          otp: formData.otp
-        }).subscribe({
-          next: result => {
-            console.log('Register API Response:', result);
-            this.registerSuccess.emit()
-            this.closeBtn?.nativeElement.click();
-            this.showOtpStep = false;
-          }, error: (error) => {
-            this.registerFailed.emit()
-            this.registerForm.reset()
-            this.closeBtn?.nativeElement.click();
-            this.showOtpStep = false;
+    if (this.registerForm.valid) {
+      this.authService.otp({
+        number: this.registerForm.value.number,
+        type: 'register'
+      }).subscribe({
+        next: (result) => {
+          console.log("==== GENERATE OTP RESULT =====", result);
+          // this.showOtpStep = true;
+          // this.registerForm.get('otp')?.enable();
+          // this.notificationService.showNotification(result.message, 'success');
+          // this.startCountdown();
+          if (result.status) {
+            const formData = this.registerForm.value;
+            this.authService.signUp({
+              username: formData.username,
+              email: formData.email,
+              password: formData.password,
+              number: formData.number,
+              usertype: "user",
+              otp: result.message
+            }).subscribe({
+              next: result => {
+                console.log('Register API Response:', result);
+                this.registerSuccess.emit()
+                this.closeBtn?.nativeElement.click();
+                this.showOtpStep = false;
+              }, error: (error) => {
+                this.registerFailed.emit()
+                this.registerForm.reset()
+                this.closeBtn?.nativeElement.click();
+                this.showOtpStep = false;
+              }
+            }); 
+          } else {
+            this.notificationService.showNotification(result.message, 'error');
           }
-        });
-      }
-    } else {
-      if (this.registerForm.valid) {
-        this.authService.otp({
-          number: this.registerForm.value.number,
-          type: 'register'
-        }).subscribe({
-          next: (result) => {
-            console.log(result)
-            this.showOtpStep = true;
-            this.registerForm.get('otp')?.enable();
-            this.notificationService.showNotification(result.message, 'success');
-            this.startCountdown();
-          },
-          error: (error) => {
-            console.log(error)
-            this.notificationService.showNotification("This number or email already exists!!!", 'error');
-          }
-        })
-      }
+        },
+        error: (error) => {
+          console.log(error)
+          this.notificationService.showNotification("This number or email already exists!!!", 'error');
+        }
+      })
     }
   }
 
